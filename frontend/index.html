@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#171a35">
+<meta name="description" content="A little imagination, a little moonlight. Create gentle bedtime stories for ages 5–10.">
+<title>Moonbeam · Little stories. Sweet dreams.</title>
+<link rel="stylesheet" href="/static/style.css"><script src="/static/app.js" defer></script>
+</head>
+<body>
+<div class="stars" aria-hidden="true"></div>
+<header><a class="brand" href="/" aria-label="Moonbeam home"><span class="brand-icon">☾</span> moonbeam<span class="brand-dot">✦</span></a><span class="header-note">MADE FOR LITTLE DREAMERS</span></header>
+<main>
+<section class="intro" aria-labelledby="heading">
+<div class="night-scene" aria-hidden="true"><span class="orbit one">✧</span><span class="orbit two">✦</span><span class="orbit three">✧</span><div class="moon"><i></i><b></b><em></em><span class="eye left"></span><span class="eye right"></span><span class="smile"></span></div><div class="cloud cloud-left"></div><div class="cloud cloud-right"></div><span class="tiny-star">✦</span></div>
+<p class="eyebrow">A LITTLE WONDER BEFORE GOODNIGHT</p>
+<h1 id="heading">Big adventures.<br><em>Little sleepy eyes.</em></h1>
+<p class="intro-copy">Turn a spark of imagination into a cozy bedtime story.<br class="desktop"> Made just for your little dreamer, ages 5–10.</p>
+</section>
+<section class="workspace" aria-label="Create a bedtime story">
+<form id="story-form" class="composer">
+<div class="card-top"><span class="small-icon" aria-hidden="true">✧</span><div><h2>Where shall we wander tonight?</h2><p>A character, a place, a tiny adventure. Anything goes.</p></div></div>
+<label for="prompt">Your story idea</label><textarea id="prompt" name="prompt" minlength="3" maxlength="1200" required placeholder="A little fox who collects fallen stars and helps them find their way home…"></textarea>
+<div class="prompt-meta"><span>Let your imagination lead the way</span><span id="count">0 / 1200</span></div>
+<div class="suggestions" aria-label="Story ideas"><button type="button" data-prompt="A little fox who collects fallen stars and helps them find their way home.">✦ A star-collecting fox</button><button type="button" data-prompt="A sleepy dragon who learns to make clouds instead of fire.">☁ A sleepy dragon</button><button type="button" data-prompt="A girl named Alice and her best friend Bob, a cat, visit a magical moon garden.">☾ A moonlit garden</button></div>
+<div class="preferences"><div><label for="age">Dreamer's age</label><select id="age" name="age"><option value="5">5 years old</option><option value="6">6 years old</option><option value="7" selected>7 years old</option><option value="8">8 years old</option><option value="9">9 years old</option><option value="10">10 years old</option></select></div><div><label for="length">A little or a little longer?</label><select id="length" name="length"><option value="short">A little tale · 2–3 min</option><option value="long">A longer adventure · 3–5 min</option></select></div></div>
+<button class="generate" id="generate" type="submit"><span aria-hidden="true">✦</span> <span id="button-label">Make a little magic</span> <span aria-hidden="true">↗</span></button>
+<p class="under-button">A gentle story, thoughtfully checked before it reaches you.</p>
+</form>
+<aside class="side-note"><span aria-hidden="true">☾</span><h3>A softer kind of adventure.</h3><p>Friendly faces. Small discoveries. And an ending that feels like a warm blanket.</p><div class="note-line"></div><p class="note-small">Every tale is written for your child's age and reviewed for kindness, clarity, and a peaceful goodnight.</p><div class="mini-book" aria-hidden="true"><span>✧</span> 📖 <span>✦</span></div></aside>
+</section>
+<section id="loading" class="loading" role="status" hidden><span class="spinner" aria-hidden="true"></span><h2>A little magic is on its way…</h2><p>Writing, checking, and gently polishing your story.<br>This may take a minute or two.</p></section>
+<p id="error" class="error" role="alert" hidden></p>
+<article id="result" class="story-page" aria-labelledby="story-title" hidden tabindex="-1"><div class="story-top"><span class="eyebrow">TONIGHT'S LITTLE ADVENTURE</span><button type="button" id="download">↓ Save story</button></div><h2 id="story-title"></h2><p id="story-meta" class="story-meta"></p><div class="story-rule">✦</div><div id="story-text"></div><p class="goodnight">The end. Sweet dreams. ☾</p><details><summary>Behind the story · quality review</summary><p>These are AI reviewer scores, not a guarantee of suitability. Grown-ups make the best reading companions.</p><div id="review-scores"></div><p id="review-note"></p></details><form id="feedback-form" class="feedback-form">
+<h3>A little change to the tale?</h3>
+<label for="feedback">What would you like us to change?</label>
+<textarea id="feedback" name="feedback" minlength="3" maxlength="1200" required placeholder="Give the fox a bunny friend, or make the ending a little sleepier…"></textarea>
+<p>We'll keep your story's characters and weave in your ideas.</p>
+<button type="submit" class="again" id="revise">Rewrite with my feedback ✧</button>
+</form><button class="again" id="again" type="button">Dream up another story ↑</button></article>
+<footer><span>✧ Imagination tucked in with care.</span><span>Little stories. Sweet dreams.</span></footer>
+</main>
+</body></html>
