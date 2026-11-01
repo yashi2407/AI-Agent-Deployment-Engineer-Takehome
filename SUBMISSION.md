@@ -10,16 +10,20 @@ The Python backend separates HTTP routes, validation, prompts, provider calls, a
 
 ```mermaid
 flowchart TD
-    UI[Browser: idea, age, length, optional feedback] --> V[FastAPI and Pydantic validation]
-    V --> S[Storyteller: generate draft]
-    S --> D[Validate draft JSON]
-    D --> J[Separate judge call: safety and quality scores]
-    J --> G[Validate review and apply approval gate]
-    G -->|Approved| R[Return story and review history to browser]
-    G -->|Rejected; attempts remain| F[Previous draft and actionable critique]
-    F --> S
-    G -->|Rejected after 3 drafts| E[Return error; no rejected story shown]
+    newRequest["New story: idea, age, length"] --> validate["FastAPI and Pydantic validation"]
+    feedback["Rewrite: original request, latest story, user feedback"] --> validate
+    validate --> writer["Storyteller: generate or rewrite draft"]
+    writer --> draft["Validate draft JSON"]
+    draft --> judge["Separate judge: safety, quality, and request fidelity"]
+    judge --> gate["Validate review and apply approval gate"]
+    gate -->|Approved| display["Display story and review history"]
+    display -->|User requests changes| feedback
+    gate -->|Rejected; attempts remain| critique["Previous draft and judge critique; retain user feedback"]
+    critique --> writer
+    gate -->|Rejected after 3 drafts| error["Show error; preserve existing story on failed rewrite"]
 ```
+
+User feedback starts a new generation/review cycle. Judge feedback drives internal revisions within that cycle; each cycle allows up to three drafts.
 
 Storyteller and judge use the selected provider with separate system prompts in [backend/prompts.py](backend/prompts.py). API keys stay on the server. The frontend renders stories as text, and the application does not persist prompts or stories.
 
